@@ -4,3 +4,6 @@ Proyecto Ciclo 3
 Integrantes Presentación:
 
 Jhonatan Alexander Tobar Trujillo: Soy estudiante de ingeniería electrónica y telecomunicaciones, actualmente estoy en último semestre en la universidad del Cauca. Me encanta el mundo de la programación, por tal motivo estoy muy contento de hacer parte de este equipo de trabajo.
+
+#Erik Dario Hernández Vásquez
+Soy Ingeniero de Sistemas con experiencia en Base de Datos y Analisis de Datos. Soy de Montería -Cordoba. Mi objetivo con MisionTIC2022 es fortalecer mas mi perfil de Dearrollo de Software. erikdhv@gmail.com
