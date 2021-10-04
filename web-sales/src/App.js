@@ -19,55 +19,36 @@ function App() {
     const [ventas, setVentas] = useState([]);
     // const [productos, setProductos] = useState([products);
 
-    return ( <
-        Router >
-        <
-        Header isLoggedIn = { logged }
+    return ( 
+    <Router>
+        <Header isLoggedIn = { logged }
         login = { setLogged }
         cantVentas = {
             ventas.reduce((total, producto) => total + producto.cantidad,
                 0
             )
         }
-        />  <
-        Switch >
-        <
-        Route path = "/BuscarProducto"
-        exact >
-        <
-        BuscarProducto / >
-        <
-        /Route> <
-        Route path = "/CrearProducto"
-        exact >
-        <
-        CrearProducto / >
-        <
-        /Route> <
-        Route path = "/"
-        exact >
-        <
-        Home isLoggedIn = { logged }
-        ventas = { ventas }
+        />  
+        <Switch>
+            <Route path = "/BuscarProducto" exact >
+                <BuscarProducto/>
+            </Route> 
+            <Route path = "/CrearProducto" exact>
+                <CrearProducto/>
+            </Route> 
+            <Route path = "/" exact>
+                <Home isLoggedIn = { logged }
+                ventas = { ventas }
+                setVentas = { setVentas }
+                /> 
+            </Route>
+
+        <Route path = "/Ventas" exact>
+        <Ventas ventas = { ventas }
         setVentas = { setVentas }
-        /> <
-        /Route> 
-
-        <
-        Route path = "/Ventas"
-        exact >
-        <
-        Ventas ventas = { ventas }
-        setVentas = { setVentas }
-        /> 
-
-        <
-        /Route> <
-        Redirect to = "/" / >
-
-        <
-        /Switch>  <
-        /Router>
+        />
+        </Route> <Redirect to = "/"/>
+        </Switch>  </Router>
     );
 }
 
