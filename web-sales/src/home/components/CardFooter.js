@@ -48,8 +48,7 @@ const CardFooter = ({
             $ { precio } < /Button>
         );
     } else {
-        return ( <
-            Badge pill bg = "secondary" > { categoria } < /Badge>
+        return ( < Badge pill bg = "secondary" > { categoria } < /Badge>
 
         );
 

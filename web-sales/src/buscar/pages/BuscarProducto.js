@@ -22,9 +22,8 @@ const BuscarProducto = ({
 
         {
             id: 1,
-
             title: "Camisa para Hombre",
-            description: "La mejor camiza con la mejor calidad",
+            description: "La mejor camisa con la mejor calidad",
             price: 100,
             url: "https://modaellos.com/wp-content/uploads/2016/03/tendencias-camisas-de-otono-invierno-2016-2017.jpg",
             categoria: "Calzado",
@@ -32,7 +31,6 @@ const BuscarProducto = ({
         },
         {
             id: 2,
-
             title: "Gafas Rayban",
             description: "Gafas para cuidar tus ojos",
             price: 50,
@@ -42,7 +40,6 @@ const BuscarProducto = ({
         },
         {
             id: 3,
-
             title: "Apple Watch",
             description: "Smartwatch para estar siempre conectado",
             price: 200,
@@ -60,7 +57,7 @@ const BuscarProducto = ({
     const handleClick = () => {
         console.log('handleClick', value);
         if (!value.length) {
-            alert("iNGRESE UN VALOR VALIDO")
+            alert("Por favor ingrese un valor valido!")
         } else {
             const existe = productosB.filter((producto) => producto.id === value);
             console.log("Hola", existe)
@@ -70,14 +67,16 @@ const BuscarProducto = ({
             } else {
                 productosB.map((producto) => {
 
-                        if (producto.id == value) {
+                    if (producto.id == value || producto.description.toUpperCase() == value.toUpperCase()) {
+                        setProd(producto);
+                        console.log("El producto es ", producto)
+                    }
+                })
 
-                            setProd(producto);
-                            console.log(prod)
-                        }
-                    })
-                    // existe.horaSalida = fecha
-                    // existe.precio = (parseInt((fecha - existe.horaEntrada)/60000)+1) * valorHora
+
+
+                // existe.horaSalida = fecha
+                // existe.precio = (parseInt((fecha - existe.horaEntrada)/60000)+1) * valorHora
                 setPlaca([...productosB])
                 console.log("Hola2")
             }
@@ -88,8 +87,7 @@ const BuscarProducto = ({
     }
 
     // if (isLoggedIn) {
-    return ( <
-        Container >
+    return ( < Container >
         <
         Row >
         <
@@ -100,16 +98,16 @@ const BuscarProducto = ({
         div className = "text-center" >
         <
         h1 className = "text-center" > Buscar: < /h1> <
-        h5 className = "text-center" > { value } < /h5> <
-        /div> <
+        h5 className = "text-center" > { value } < /h5> < /
+        div > <
         Form.Group className = "mb-3" >
         <
         Form.Label > Digita id del producto: < /Form.Label> <
         Form.Control type = "text"
         onChange = { handleChange }
 
-        /> <
-        /Form.Group> <
+        /> < /
+        Form.Group > <
         Button type = "button"
         variant = "outline-secondary" >
         Cancelar <
@@ -121,8 +119,8 @@ const BuscarProducto = ({
         variant = "primary"
         className = "float-end" >
         Buscar <
-        /Button> <
-        /Form> <
+        /Button> < /
+        Form > <
         Table striped bordered hover >
         <
         thead >
@@ -136,24 +134,18 @@ const BuscarProducto = ({
         th > Precio < /th>
 
         <
-        /tr> <
-        /thead> <
-        tbody > {
-            prod.map((product) => {
-                return ( <
-                    tr key = { product.id } >
-                    <
-                    td > { product.id } < /td> <
-                    td > { product.title } < /td> <
-                    td > { product.description } < /td> <
-                    td > { product.categoria } < /td> <
-                    td > { product.price } < /td>
-
-                    <
-                    /tr>
-                );
-            })
-        } <
+        /tr> < /
+        thead > <
+        tbody >
+        <
+        tr > <
+        td > { prod.id } < /td> <
+        td > { prod.title } < /td> <
+        td > { prod.description } < /td>  <
+        td > { prod.categoria } < /td>  <
+        td > { prod.price } < /td> < /
+        tr >
+        <
         /tbody>
 
         <
@@ -161,19 +153,12 @@ const BuscarProducto = ({
 
 
         <
-        /Col> <
-        /Row>
+        /Col> < /
+        Row >
 
         <
         /Container>
     );
-    // } else {
-    //     return ( 
-    //     <Badge pill bg = "secondary" > { categoria } </Badge>
-
-    //     );
-
-    // }
 
 };
 
