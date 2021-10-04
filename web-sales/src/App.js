@@ -42,13 +42,14 @@ function App() {
                 setVentas = { setVentas }
                 /> 
             </Route>
-
-        <Route path = "/Ventas" exact>
-        <Ventas ventas = { ventas }
-        setVentas = { setVentas }
-        />
-        </Route> <Redirect to = "/"/>
-        </Switch>  </Router>
+            <Route path = "/Ventas" exact>
+                <Ventas ventas = { ventas }
+                setVentas = { setVentas }
+                />
+            </Route> 
+            <Redirect to = "/"/>
+        </Switch>  
+    </Router>
     );
 }
 

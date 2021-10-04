@@ -3,12 +3,13 @@ import { Container } from "react-bootstrap";
 import Button from 'react-bootstrap/Button';
 
 const Ventas = ({ ventas, setVentas }) => {
-    const popProduct = (e) => {
+  console.log("ventas", ventas);  
+  console.log("setVentas", setVentas);  
+  const popProduct = (e) => {
         const productoEliminar = e.target.id;
         const ventasSinProducto = ventas.filter((p) => p.id != productoEliminar);
         setVentas([...ventasSinProducto]);
     };
-
  
     return (
         <div>
@@ -33,7 +34,7 @@ const Ventas = ({ ventas, setVentas }) => {
                       <td>{producto.nombre}</td>
                       <td>{producto.cantidad}</td>
                       <td>{producto.precio}</td>
-                      <td>{producto.total}</td>
+                      <td>{producto.cantidad*producto.precio}</td>
                       <td>
                         <Button
                           variant="danger"
