@@ -41,14 +41,13 @@ const CardFooter = ({
     if (isLoggedIn) {
         return (
 
-            <
-            Button id = { description }
+            <Button id = { description }
             variant = "primary"
             onClick = { AddProduct } >
-            $ { precio } < /Button>
+            $ { precio } </Button>
         );
     } else {
-        return ( < Badge pill bg = "secondary" > { categoria } < /Badge>
+        return ( <Badge pill bg = "secondary" > { categoria } </Badge>
 
         );
 

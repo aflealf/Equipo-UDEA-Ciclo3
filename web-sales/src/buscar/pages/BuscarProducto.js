@@ -87,77 +87,60 @@ const BuscarProducto = ({
     }
 
     // if (isLoggedIn) {
-    return ( < Container >
-        <
-        Row >
-        <
-        Col >
-        <
-        Form >
-        <
-        div className = "text-center" >
-        <
-        h1 className = "text-center" > Buscar: < /h1> <
-        h5 className = "text-center" > { value } < /h5> < /
-        div > <
-        Form.Group className = "mb-3" >
-        <
-        Form.Label > Digita id del producto: < /Form.Label> <
-        Form.Control type = "text"
+    return (
+         < Container >
+        
+        <Row >
+        <Col >
+        <Form >
+        <div className = "text-center" >
+        <h1 className = "text-center" > Buscar: </h1> 
+        <h5 className = "text-center" > { value } </h5> 
+        </div > <Form.Group className = "mb-3" >
+        <Form.Label > Digita id del producto: </Form.Label>
+        <Form.Control type = "text"
         onChange = { handleChange }
 
-        /> < /
-        Form.Group > <
-        Button type = "button"
+        /> 
+        </Form.Group > 
+        <Button type = "button"
         variant = "outline-secondary" >
-        Cancelar <
-        /Button>
+        Cancelar </Button>
 
-        <
-        Button onClick = { handleClick }
+        <Button onClick = { handleClick }
         type = "button"
         variant = "primary"
         className = "float-end" >
-        Buscar <
-        /Button> < /
-        Form > <
-        Table striped bordered hover >
-        <
-        thead >
-        <
-        tr >
-        <
-        th > Id < /th> <
-        th > Nombre < /th> <
-        th > Descripcion < /th> <
-        th > Categoria < /th> <
-        th > Precio < /th>
+        Buscar </Button> 
+        </Form > 
+        <Table striped bordered hover >
+        <thead >
+        <tr >
+        <th > Id </th> 
+        <th > Nombre </th> 
+        <th > Descripcion </th>
+         <th > Categoria </th> 
+         <th > Precio </th>
 
-        <
-        /tr> < /
-        thead > <
-        tbody >
-        <
-        tr > <
-        td > { prod.id } < /td> <
-        td > { prod.title } < /td> <
-        td > { prod.description } < /td>  <
-        td > { prod.categoria } < /td>  <
-        td > { prod.price } < /td> < /
-        tr >
-        <
-        /tbody>
-
-        <
-        /Table>
+        </tr> 
+        </thead > 
+        <tbody>
+        <tr>
+        <td> { prod.id } </td> 
+        <td> { prod.title } </td> 
+        <td> { prod.description } </td>  
+        <td> { prod.categoria } </td>  
+        <td> { prod.price } </td> 
+        </tr>
+        </tbody>
+        
+        </Table>
 
 
-        <
-        /Col> < /
-        Row >
+        </Col> 
+        </Row >
 
-        <
-        /Container>
+        </Container>
     );
 
 };

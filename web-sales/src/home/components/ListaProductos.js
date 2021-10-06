@@ -38,12 +38,9 @@ const ListaProductos = ({ isLoggedIn, ventas, setVentas }) => {
 
     ];
 
-    return ( <
-        Container >
-        <
-        Row >
-        <
-        Producto producto = { productos }
+    return ( <Container >
+        <Row >
+        <Producto producto = { productos }
         isLoggedIn = { isLoggedIn }
         productos = { productos }
         ventas = { ventas }
@@ -51,9 +48,7 @@ const ListaProductos = ({ isLoggedIn, ventas, setVentas }) => {
 
         /> 
 
-        <
-        /Row> <
-        /Container>
+        </Row> </Container>
     );
 };
 export default ListaProductos;
