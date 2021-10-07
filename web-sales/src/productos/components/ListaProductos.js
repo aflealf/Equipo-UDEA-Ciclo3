@@ -7,7 +7,6 @@ const ListaProductos = ({ isLoggedIn, ventas, setVentas }) => {
 
         {
             id: 1,
-
             title: "Camisa para Hombre",
             description: "La mejor camiza con la mejor calidad",
             price: 100,
@@ -17,7 +16,6 @@ const ListaProductos = ({ isLoggedIn, ventas, setVentas }) => {
         },
         {
             id: 2,
-
             title: "Gafas Rayban",
             description: "Gafas para cuidar tus ojos",
             price: 50,
@@ -27,7 +25,6 @@ const ListaProductos = ({ isLoggedIn, ventas, setVentas }) => {
         },
         {
             id: 3,
-
             title: "Apple Watch",
             description: "Smartwatch para estar siempre conectado",
             price: 200,
@@ -52,12 +49,12 @@ const ListaProductos = ({ isLoggedIn, ventas, setVentas }) => {
                 ventas = { ventas }
                 setVentas = { setVentas }
 
-                />  <
-                /Col>
+                />  < /
+                Col >
             ))
         } <
-        /Row> <
-        /Container>
+        /Row> < /
+        Container >
     );
 };
 export default ListaProductos;
