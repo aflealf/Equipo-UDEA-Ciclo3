@@ -13,7 +13,8 @@ import Ventas from "./ventas/pages/Ventas";
 import Header from "./shared/Header";
 import CrearProducto from "./productos/pages/CrearProducto";
 import BuscarProducto from "./buscar/pages/BuscarProducto";
-
+import RegistroUsuario from "./usuarios/pages/RegistroUsuario";
+import ListadoUsuarios from "./usuarios/pages/ListadoUsuarios";
 function App() {
     const [logged, setLogged] = useState(false);
     const [ventas, setVentas] = useState([]);
@@ -30,6 +31,13 @@ function App() {
         }
         />  
         <Switch>
+        <Route path = "/ListadoUsuarios" exact >
+                <ListadoUsuarios/>
+            </Route> 
+
+            <Route path = "/RegistroUsuario" exact >
+                <RegistroUsuario/>
+            </Route> 
             <Route path = "/BuscarProducto" exact >
                 <BuscarProducto/>
             </Route> 

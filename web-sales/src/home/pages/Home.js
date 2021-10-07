@@ -14,8 +14,7 @@ const Home = ({ isLoggedIn, ventas, setVentas, login, cantVentas }) => {
     if (isLoggedIn) {
         return ( 
             <Container>
-            <
-            ListaProductos isLoggedIn = { isLoggedIn }
+            <ListaProductos isLoggedIn = { isLoggedIn }
             ventas = { ventas }
             setVentas = { setVentas }
             />  

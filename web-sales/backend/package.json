@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
     "name": "ecomerce-backend",
     "version": "1.0.0",
     "description": "",
@@ -13,4 +14,18 @@
         "mongodb": "^4.1.3",
         "mongoose": "^6.0.9"
     }
+=======
+  "name": "backend-websales",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+>>>>>>> 8e9cbd711940c8779080b8acb63c748d76d46920
 }

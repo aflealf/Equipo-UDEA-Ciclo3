@@ -16,38 +16,33 @@ const HomeButtons = ({ isLoggedIn, setLogin, setVentas, ventas, cantVentas }) =>
     };
 
     if (isLoggedIn) {
-        return ( <
-            React.Fragment >
-            <
-            Link to = "/Ventas" >
-            <
-            Button variant = "primary"
-            className = "me-3" > Ventas < Badge bg = "secondary" > { cantVentas } <
-            /Badge>  <
-            /Button>  <
-            /Link> <
-            ListaProductos isLoggedIn = { isLoggedIn }
+        return (
+             <React.Fragment >
+            <Link to = "/Ventas" >
+            <Button variant = "primary"
+            className = "me-3" > Ventas < Badge bg = "secondary" > { cantVentas } 
+            </Badge>
+            </Button> 
+            </Link> 
+            <ListaProductos isLoggedIn = { isLoggedIn }
             ventas = { ventas }
             setVentas = { setVentas }
             />
 
-            <
-            Button variant = "outline-light"
+            <Button variant = "outline-light"
             onClick = { logout } >
-            Logout <
-            /Button>  <
-            /React.Fragment>
+            Logout 
+            </Button>  
+            </React.Fragment>
         );
     } else {
-        return ( <
-            div className = "bg-light border" >
-            <
-            Button variant = "light"
+        return ( 
+            <div className = "bg-light border" >
+            <Button variant = "light"
             onClick = { login } >
-            Login < /Button>
+            Login </Button>
 
-            <
-            /div>
+            </div>
         );
     }
 };
