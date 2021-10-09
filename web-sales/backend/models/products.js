@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var uniqueValidator = require('mongoose-unique-validator');
+require('mongoose-type-url');
 
 const producto = mongoose.Schema({
     title: {
@@ -19,7 +20,7 @@ const producto = mongoose.Schema({
         max: [9999999, 'El precio ingresado es incorrecto, {VALUE}'],
         default: 0
     },
-    url: { type: String, required: true, maxlength: 1000 },
+    url: { work: { type: mongoose.SchemaTypes.Url, required: true } },
     categoria: {
         type: String,
         enum: {
