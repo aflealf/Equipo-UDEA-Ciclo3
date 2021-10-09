@@ -58,16 +58,15 @@ exports.save = function(req, res) {
         categoria: req.body.categoria
     });
 
-    // No se usa Promise, se usa un Callback
     productAdd.save(function(err) {
         if (err) {
             console.log('Error: ', err);
-            res.status(400).json("Error al guardar la información");
+            res.status(400).json(err);
+        } else {
+            console.log("Successfully created a product. :)");
+            //res.render("../views/product/edit", { product: product });
+            res.status(201).json("Creado satisfactoriamente");
         }
-
-        console.log("Successfully created a product. :)");
-        //res.render("../views/product/edit", { product: product });
-        res.status(201).json("Creado satisfactoriamente");
     });
 };
 

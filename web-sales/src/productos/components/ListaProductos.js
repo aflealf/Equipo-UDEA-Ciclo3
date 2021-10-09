@@ -35,33 +35,26 @@ const ListaProductos = ({ isLoggedIn, ventas, setVentas }) => {
 
     ];
 
-    return ( 
-        <Container >
-        <Row > {
-            productos.map((producto) => (
-                 <Col xs = { 4 }
+    return ( <
+        Container >
+        <
+        Row > {
+            productos.map((producto) => ( <
+                Col xs = { 4 }
                 key = { producto.id } >
-                <Producto producto = { producto }
+                <
+                Producto producto = { producto }
                 isLoggedIn = { isLoggedIn }
                 productos = { productos }
                 ventas = { ventas }
-                setVentas = { setVentas }
-
-<<<<<<< HEAD
-                />  < /
+                setVentas = { setVentas } ></Producto>
+                <
+                /
                 Col >
             ))
         } <
         /Row> < /
         Container >
-=======
-                /> 
-                 </Col>
-            ))
-        } 
-        </Row> 
-        </Container>
->>>>>>> 8e9cbd711940c8779080b8acb63c748d76d46920
     );
 };
 export default ListaProductos;

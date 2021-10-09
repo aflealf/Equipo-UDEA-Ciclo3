@@ -50,7 +50,7 @@ exports.create = function(req, res) {
  * 
  */
 exports.save = function(req, res) {
-    const UserAdd = new({
+    const UserAdd = new User({
         email: req.body.email,
         nombres: req.body.nombres,
         apellidos: req.body.apellidos,
@@ -67,12 +67,12 @@ exports.save = function(req, res) {
     UserAdd.save(function(err) {
         if (err) {
             console.log('Error: ', err);
-            res.status(400).json("Error al guardar la información");
+            res.status(400).json(err);
+        } else {
+            console.log("Successfully created a user. :)");
+            //res.render("../views/user/edit", { usuario: usuario });
+            res.status(201).json("Creado satisfactoriamente");
         }
-
-        console.log("Successfully created a user. :)");
-        //res.render("../views/user/edit", { usuario: usuario });
-        res.status("201").json("Creado satisfactoriamente");
     });
 };
 
@@ -83,7 +83,7 @@ exports.save = function(req, res) {
  */
 exports.edit = function(req, res) {
     User.findOne({ _id: req.params.id }).exec(function(err, user) {
-        if (err) { console.log("No existe", err); return; }
+        if (err) { console.log("Error:", err); return; }
 
         res.render("../views/user/edit", { user: user });
 
