@@ -20,6 +20,7 @@ router.get("/edit/:id", UserController.edit);
 /** 
  * Rutas Post
  */
+
 router.post("/update/:id", UserController.update);
 router.post("/delete/:id", UserController.delete);
 router.post("/", UserController.save);

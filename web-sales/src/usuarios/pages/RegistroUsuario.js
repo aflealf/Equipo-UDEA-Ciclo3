@@ -3,6 +3,8 @@ import Button from 'react-bootstrap/Button'
 import { Col, Container, Row } from 'react-bootstrap';
 import React from 'react';
 import { Link } from "react-router-dom";
+import UserService from '../../services/users.service';
+
 
 
 
@@ -17,9 +19,9 @@ import { Link } from "react-router-dom";
 ];
     return ( 
         <React.Fragment >
-
+{console.log(UserService)}
         <Container >
-        <h1 classNmae = "d-flex justify-content-center align-text"  > Registro Usuarios </h1> 
+        <h1 className = "d-flex justify-content-center align-text"  > Registro Usuarios </h1> 
         <Row className = "d-flex justify-content-center align-text" >
 
         <Col xs = { 6 } >
