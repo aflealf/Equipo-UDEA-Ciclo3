@@ -9,8 +9,12 @@ import { GoogleLogin } from 'react-google-login';
 const HeaderButtons = ({ isLoggedIn, setLogin, cantVentas }) => {
 
 
-    const login = () => {
+    const login = (res) => {
         setLogin(true);
+    };
+
+    const loginError = (err) => {
+        console.log(err);
     };
 
     const logout = () => {
@@ -64,7 +68,7 @@ const HeaderButtons = ({ isLoggedIn, setLogin, cantVentas }) => {
                     clientId="673123986671-5uj893dbjoghe04b3t66cimdk7or1qn0.apps.googleusercontent.com"
                     buttonText="Login"
                     onSuccess={login}
-                    onFailure={login}
+                    onFailure={loginError}
                     cookiePolicy={'single_host_origin'}
                 />
             {/* <Button variant = "light"
