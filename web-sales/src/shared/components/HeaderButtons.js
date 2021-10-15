@@ -4,8 +4,11 @@ import Button from "react-bootstrap/Button";
 import Badge from "react-bootstrap/Badge";
 import { Col, Container, Row } from 'react-bootstrap';
 import { Link } from "react-router-dom";
+import { GoogleLogin } from 'react-google-login';
 
 const HeaderButtons = ({ isLoggedIn, setLogin, cantVentas }) => {
+
+
     const login = () => {
         setLogin(true);
     };
@@ -57,10 +60,17 @@ const HeaderButtons = ({ isLoggedIn, setLogin, cantVentas }) => {
     } else {
         return ( 
             <div >
-            <Button variant = "light"
+                <GoogleLogin
+                    clientId="673123986671-5uj893dbjoghe04b3t66cimdk7or1qn0.apps.googleusercontent.com"
+                    buttonText="Login"
+                    onSuccess={login}
+                    onFailure={login}
+                    cookiePolicy={'single_host_origin'}
+                />
+            {/* <Button variant = "light"
             onClick = { login } >
             Login 
-            </Button>  
+            </Button>   */}
             </div>
         );
     }

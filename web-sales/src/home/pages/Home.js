@@ -8,9 +8,6 @@ import GoogleLogin from 'react-google-login';
 
 
 const Home = ({ isLoggedIn, ventas, setVentas, login, cantVentas }) => {
-    const responseGoogle = (response) => {
-        console.log(response);
-    }
     if (isLoggedIn) {
         return ( 
             <Container>
@@ -52,13 +49,6 @@ const Home = ({ isLoggedIn, ventas, setVentas, login, cantVentas }) => {
             */}
             <div className="container" align="center">
             <div className="row" className="justify-content-center">OR</div>
-            <GoogleLogin
-                clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
-                buttonText="Login"
-                onSuccess={responseGoogle}
-                onFailure={responseGoogle}
-                cookiePolicy={'single_host_origin'}
-            />
             </div>
             </div>
           </div>
