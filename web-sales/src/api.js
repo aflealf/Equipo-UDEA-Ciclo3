@@ -44,7 +44,33 @@ const api = {
         list() {
             return callApi("/users");
         },
-    },
+        delete(id) {
+            return callApi(`/users/${id}`, {
+                method: "DELETE",
+            });
+        },
+        edit(usuario) {
+            return callApi(`/users/${usuario._id}`, {
+                method: "PUT",
+                body: JSON.stringify(usuario),
+            });
+         },
+         getUsers(id) {
+            return callApi(`/users/${id}`);
+        },
+        },
+         roles: {
+            list() {
+                return callApi("/roles");
+            },
+        },
+        estados: {
+            list() {
+                return callApi("/categoria");
+            },
+        },
+    
+       
 };
 
 export default api;

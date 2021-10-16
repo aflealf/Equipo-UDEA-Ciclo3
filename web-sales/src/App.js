@@ -17,17 +17,22 @@ import Gestion from "./productos/pages/Gestion";
 import api from "./api";
 import { useEffect } from "react";
 import EditarProducto from "./productos/pages/EditarProducto";
+import ListadoUsuarios from "./usuarios/pages/ListadoUsuarios";
+import EditarUsuario from "./usuarios/pages/EditarUsuario";
 
 function App() {
   const [logged, setLogged] = useState(false);
   const [carrito, setCarrito] = useState([]);
   const [productos, setProductos] = useState([]);
+  const [usuarios, setUsuarios] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       const response = await api.products.list();
       //console.log(response);
       setProductos(response);
+      const responseUsers = await api.users.list();
+      setProductos(responseUsers);
     };
 
     fetchData();
@@ -111,7 +116,13 @@ function App() {
             <Route path="/Gestion/Edit/:productId" exact>
               <EditarProducto productos={productos} setProductos={setProductos} />
             </Route>
-    
+            <Route path="/ListadoUsuarios" exact>
+              <ListadoUsuarios usuarios={usuarios} setUsuarios={setUsuarios} />
+            </Route>
+            <Route path="/EditarUsuario" exact>
+              <EditarUsuario usuarios={usuarios} setUsuarios={setUsuarios} />
+            </Route>
+     
             <Redirect to="/" />
           </Switch>
         </Router>

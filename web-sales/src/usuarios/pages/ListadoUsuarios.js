@@ -7,9 +7,9 @@ import { Link } from "react-router-dom";
 
 
 const ListadoUsuarios = ({usuarios, setUsuarios}) => {
-  const deleteProduct = (event) => {
+  const deleteUser = (event) => {
     const id = event.target.id;
-    api.usuarios.delete(id);
+    api.users.delete(id);
     console.log(usuarios);
     const newUsers = usuarios.filter((usuario) => usuario._id !== id);
     setUsuarios([...newUsers]);
@@ -36,7 +36,7 @@ const ListadoUsuarios = ({usuarios, setUsuarios}) => {
             </thead>
             <tbody>
               {usuarios.map((usuario) =>{ 
-                return(
+              return(
                 <tr key ={usuario._id} >
                 
                 <td>{usuario.nombres}</td>
@@ -45,7 +45,7 @@ const ListadoUsuarios = ({usuarios, setUsuarios}) => {
                 <td>{usuario.estado}</td>
 
                 <td>
-                    <Link to={`/Gestion/Edit/${usuario._id}`}>
+                    <Link to={`/ListadoUsuarios/Edit/${usuario._id}`}>
                       <Button variant="warning">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -62,7 +62,7 @@ const ListadoUsuarios = ({usuarios, setUsuarios}) => {
 
                     <Button
                       variant="danger"
-                      onClick={deleteProduct}
+                      onClick={deleteUser}
                       id={usuario._id}
                       className="ms-2"
                     >

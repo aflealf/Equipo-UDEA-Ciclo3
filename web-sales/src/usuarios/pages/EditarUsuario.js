@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { Container, Row, Col, Alert } from "react-bootstrap";
 import api from "../../api";
-import ProductForm from "../components/ProductForm";
+import UsersForm from "../components/UsersForm";
 
 const EditarUsuario = ({ usuarios, setUsuarios }) => {
   const history = useHistory();
@@ -34,19 +34,19 @@ const EditarUsuario = ({ usuarios, setUsuarios }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await api.usuarios.getUser(productId);
+      const response = await api.users.getUsers(usuarios._id);
       setNewProduct(response);
     };
 
     fetchData();
-  }, [productId]);
+  }, [usuarios]);
 
   const handleChange = (event) => {
     setNewProduct({ ...newProduct, [event.target.name]: event.target.value });
   };
 
   const handleClick = async () => {
-    const apiResponse = await api.usuarios.edit(newProduct);
+    const apiResponse = await api.users.edit(newProduct);
     if (apiResponse.err) {
       setError(apiResponse.err.message);
       console.log(apiResponse.err);
@@ -65,7 +65,7 @@ const EditarUsuario = ({ usuarios, setUsuarios }) => {
           <Col xs={6}>
             {error && <Alert variant="danger">{error}</Alert>}
             {success && <Alert variant="success">{success}</Alert>}
-            <ProductForm
+            <UsersForm
               handleChange={handleChange}
               handleClick={handleClick}
               roles = {roles}
