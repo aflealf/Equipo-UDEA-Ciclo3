@@ -66,6 +66,7 @@ const HeaderButtons = ({ isLoggedIn, setLogin, cantVentas }) => {
                     onFailure={loginError}
                     cookiePolicy={'single_host_origin'}
                 />
+
             </div>
         );
     }
