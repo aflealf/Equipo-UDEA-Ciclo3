@@ -3,6 +3,7 @@ import React from "react";
 import Form from 'react-bootstrap/Form'
 import { Container } from "react-bootstrap";
 import ListaProductos from "../components/ListaProductos";
+import { GoogleLogin } from 'react-google-login';
 
 const Home = ({ isLoggedIn, ventas, setVentas, carrito, setCarrito,login, cantVentas, productos }) => {
     const responseGoogle = (response) => {

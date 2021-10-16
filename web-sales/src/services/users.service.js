@@ -15,9 +15,6 @@ function UserService() {
     const [logged, setLogged] = useState(false);
     const [productos, setProductos] = useState([]);
 
-
-
-
     useEffect(() => {
         const fetchData = async() => {
             const response = await CallApi();
@@ -26,30 +23,17 @@ function UserService() {
 
         fetchData();
     }, []);
-    return ( <
-        Router >
-        <
-        Header isLoggedIn = { logged }
-        login = { setLogged }
+    return ( 
+        <Router>
+            <Header isLoggedIn = { logged } login = { setLogged }/>
+            <Switch>
+                <Route path = "/" exact>
+                    <Home isLoggedIn = { logged } productos = { productos }/>
+                </Route>
 
-        /> <
-        Switch >
-        <
-        Route path = "/"
-        exact >
-        <
-        Home isLoggedIn = { logged }
-
-        productos = { productos }
-        /> <
-        /Route>
-
-
-        <
-        Redirect to = "/" / >
-        <
-        /Switch> <
-        /Router>
+                <Redirect to = "/" />
+            </Switch>
+        </Router>
     );
 };
 

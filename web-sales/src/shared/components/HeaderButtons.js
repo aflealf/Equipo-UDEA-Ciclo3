@@ -1,21 +1,21 @@
 import React from "react";
 
 import Button from "react-bootstrap/Button";
-//import Badge from "react-bootstrap/Badge";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import NavDropdown from 'react-bootstrap/NavDropdown'
-//import ButtonGroup from 'react-bootstrap/ButtonGroup'
-//import Dropdown from 'react-bootstrap/Dropdown'
-//import DropdownButton from 'react-bootstrap/DropdownButton'
-//import { Col, Container, Row } from 'react-bootstrap';
-//import { Link } from "react-router-dom";
+import { GoogleLogin } from 'react-google-login';
 
 const HeaderButtons = ({ isLoggedIn, setLogin, cantVentas }) => {
     const login = (res) => {
         setLogin(true);
         localStorage.setItem("isLogged", true);
     };
+
+    const loginError = (err) => {
+        console.log(err);
+      };
+
     const logout = () => {
         setLogin(false);
         localStorage.setItem("isLogged", false);
@@ -59,6 +59,13 @@ const HeaderButtons = ({ isLoggedIn, setLogin, cantVentas }) => {
         return ( 
             <div>
                 <Button onClick={ login }>Login</Button>
+                  <GoogleLogin
+                    clientId="673123986671-5uj893dbjoghe04b3t66cimdk7or1qn0.apps.googleusercontent.com"
+                    buttonText="Login"
+                    onSuccess={login}
+                    onFailure={loginError}
+                    cookiePolicy={'single_host_origin'}
+                />
             </div>
         );
     }

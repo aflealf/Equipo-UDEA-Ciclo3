@@ -1,10 +1,10 @@
-// /**
-//  * @description : Controlador encargado de gestionar los datos de los usuarios.
-//  * @author      : Grupo 3 Desarrollador de solucion de reto Mision TIC 2022
-//  * @copyright   : erikdhv@gmail.com
-//  *  
-//  * @summary     : Falta implementar validaciones para que quede un poco mas descente
-//  */
+/**
+  * @description : Controlador encargado de gestionar los datos de los usuarios.
+  * @author      : Grupo 3 Desarrollador de solucion de reto Mision TIC 2022
+  * @copyright   : erikdhv@gmail.com
+  *  
+  * @summary     : Falta implementar validaciones para que quede un poco mas descente
+  */
 
 // var mongoose = require('mongoose');
 // var User = require("../models/users");
@@ -149,6 +149,7 @@
 //     });
 
 // // };
+
 const User = require("../models/users");
 
 exports.GetUser = (req, res) => {

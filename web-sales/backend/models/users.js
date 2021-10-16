@@ -1,3 +1,6 @@
+const mongoose = require("mongoose");
+require('mongoose-type-email');
+
 const usuario = mongoose.Schema({
     email: [{ type: mongoose.SchemaTypes.Email }],
     nombres: {
@@ -45,12 +48,4 @@ const usuario = mongoose.Schema({
     created_at: { type: Date, default: Date.now }
 });
 
-const mongoose = require("mongoose");
-
-const userSchema = mongoose.Schema({
-  email: { type: String, required: true },
-  nombre: { type: String, required: true },
-  activo: { type: Boolean, required: true },
-});
-
-module.exports = mongoose.model("User", userSchema);
+module.exports = mongoose.model("users", usuario);
