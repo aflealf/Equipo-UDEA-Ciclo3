@@ -13,48 +13,43 @@ import Ventas from "./ventas/pages/Ventas";
 import Header from "./shared/Header";
 import CrearProducto from "./productos/pages/CrearProducto";
 import BuscarProducto from "./buscar/pages/BuscarProducto";
-import RegistroUsuario from "./usuarios/pages/RegistroUsuario";
+
 import ListadoUsuarios from "./usuarios/pages/ListadoUsuarios";
-import CallApi from "./api.js/env";
+import api from "./api";
+
 function App() {
     const [logged, setLogged] = useState(false);
     const [ventas, setVentas] = useState([]);
     const [usuarios, setUsuarios] = useState([]);
-    const [estados, setEstados ] =  useState([]);
-    const [roles, setRoles] =  useState([]);
+
   
     useEffect(() => {
-      const getUsers = async () => {
-         await fetch("http://localhost:3002/api/users")
-          .then(res =>  res.json())
-          .then(res => setUsuarios(res))
-          
-      };
-      const getEstados = async () => {
-        await fetch("http://localhost:3002/api/estados")
-         .then(res =>  res.json())
-         .then(res => setEstados(res))
-         
-     };
-     const getRoles = async () => {
-        await fetch("http://localhost:3002/api/roles")
-         .then(res =>  res.json())
-         .then(res => setRoles(res))
-         
-     };
-     getRoles();
-     getEstados();
+        const fetchData = async () => {
+          const response = await api.usuarios.list();
+          setUsuarios(response);
+        };
+
+        fetchData();
+
       
-      getUsers();
 
     }, []);
-
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+    
+        if (token === null) {
+          setLogged(false);
+        } else {
+          setLogged(true);
+        }
+      }, []);
    
    
 
     return ( 
     <Router>
-        <Header isLoggedIn = { logged }
+        <Header 
+        isLoggedIn = { logged }
         login = { setLogged }
         cantVentas = {
             ventas.reduce((total, producto) => total + producto.cantidad,
@@ -63,19 +58,13 @@ function App() {
         }
         />  
         <Switch>
-        <Route path = "/CallApi" exact >
-                <CallApi/>
-            </Route> 
+         
         <Route path = "/ListadoUsuarios" exact >
                 <ListadoUsuarios
                 usuarios = {usuarios}
-                roles= {roles}
-                estados = {estados} />
+                setUsuarios =  {setUsuarios}
+             />
                 
-            </Route> 
-
-            <Route path = "/RegistroUsuario" exact >
-                <RegistroUsuario/>
             </Route> 
             <Route path = "/BuscarProducto" exact >
                 <BuscarProducto/>

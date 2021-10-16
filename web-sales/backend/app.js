@@ -1,8 +1,8 @@
+
 var express = require('express');
 var mongoose = require('mongoose');
 const cors = require("cors");
 var app = express();
-
 /**
  * Seccion de definición de Rutas
  */
@@ -15,7 +15,7 @@ const rolesRoutes = require("./routes/roles");
  */
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cors({origin:true, credentials:true}));
+app.use(cors({ origin: true, credentials: true }));
 
 /** 
  * Se realiza la conexion a la Base de Datos mongoDB
@@ -26,11 +26,11 @@ mongoose
     )
     .then(() => {
         console.log("Estamos conectados");
-    });
+    })
+    .catch(error => console.error(error));
 
 app.use("/api/products/", productsRoutes);
 app.use("/api/users/", usersRoutes);
 app.use("/api/estados/", estadosRoutes);
 app.use("/api/roles/", rolesRoutes);
-
 module.exports = app;

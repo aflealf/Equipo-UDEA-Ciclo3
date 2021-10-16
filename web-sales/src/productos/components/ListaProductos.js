@@ -47,21 +47,13 @@ const ListaProductos = ({ isLoggedIn, ventas, setVentas }) => {
                 ventas = { ventas }
                 setVentas = { setVentas }
 
-<<<<<<< HEAD
-                />  < /
-                Col >
-            ))
-        } <
-        /Row> < /
-        Container >
-=======
-                /> 
-                 </Col>
+                ></Producto>
+                  
+                </Col >
             ))
         } 
         </Row> 
-        </Container>
->>>>>>> 8e9cbd711940c8779080b8acb63c748d76d46920
+        </Container >
     );
 };
 export default ListaProductos;
