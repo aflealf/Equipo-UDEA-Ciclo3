@@ -35,13 +35,15 @@ const ListaProductos = ({ isLoggedIn, ventas, setVentas }) => {
 
     ];
 
-    return ( 
-        <Container >
-        <Row > {
-            productos.map((producto) => (
-                 <Col xs = { 4 }
+    return ( <
+        Container >
+        <
+        Row > {
+            productos.map((producto) => ( <
+                Col xs = { 4 }
                 key = { producto.id } >
-                <Producto producto = { producto }
+                <
+                Producto producto = { producto }
                 isLoggedIn = { isLoggedIn }
                 productos = { productos }
                 ventas = { ventas }
