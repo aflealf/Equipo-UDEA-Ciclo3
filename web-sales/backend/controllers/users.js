@@ -149,7 +149,6 @@
 //     });
 
 // // };
-
 const User = require("../models/users");
 
 exports.GetUser = (req, res) => {
