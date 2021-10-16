@@ -1,7 +1,3 @@
-var mongoose = require('mongoose');
-var uniqueValidator = require('mongoose-unique-validator');
-require('mongoose-type-email');
-
 const usuario = mongoose.Schema({
     email: [{ type: mongoose.SchemaTypes.Email }],
     nombres: {
@@ -49,6 +45,12 @@ const usuario = mongoose.Schema({
     created_at: { type: Date, default: Date.now }
 });
 
-usuario.plugin(uniqueValidator);
+const mongoose = require("mongoose");
 
-module.exports = mongoose.model("Usuario", usuario);
+const userSchema = mongoose.Schema({
+  email: { type: String, required: true },
+  nombre: { type: String, required: true },
+  activo: { type: Boolean, required: true },
+});
+
+module.exports = mongoose.model("User", userSchema);

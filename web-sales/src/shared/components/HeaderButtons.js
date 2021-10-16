@@ -12,11 +12,10 @@ import NavDropdown from 'react-bootstrap/NavDropdown'
 //import { Link } from "react-router-dom";
 
 const HeaderButtons = ({ isLoggedIn, setLogin, cantVentas }) => {
-    const login = () => {
+    const login = (res) => {
         setLogin(true);
         localStorage.setItem("isLogged", true);
     };
-
     const logout = () => {
         setLogin(false);
         localStorage.setItem("isLogged", false);

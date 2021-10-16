@@ -6,8 +6,6 @@ const callApi = async(url, options = {}) => {
 
     const response = await fetch("http://localhost:3002/api" + url, options);
     const data = await response.json();
-    console.log(data);
-    console.log("***");
     return data;
 };
 
