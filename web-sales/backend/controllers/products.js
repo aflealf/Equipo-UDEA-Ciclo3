@@ -119,13 +119,11 @@ exports.update = function(req, res) {
  * 
  */
 exports.delete = function(req, res) {
+    
+    const id = req.params.id;
 
-    Product.remove({ _id: req.params.id }, function(err) {
-        if (err) { console.log('Error: ', err); return; }
-
-        console.log("Product deleted!");
-        res.status(201).json("Poducto eliminado satisfactoriamente");
-        res.redirect("/products");
-    });
+    Product.deleteOne({ _id: id }).then((productoResult) => {
+            res.status(200).json("El producto se eliminó satisfactoriamente.");
+        });
 
 };

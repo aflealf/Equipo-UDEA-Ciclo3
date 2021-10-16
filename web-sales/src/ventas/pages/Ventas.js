@@ -7,7 +7,7 @@ const Ventas = ({ ventas, setVentas }) => {
   console.log("setVentas", setVentas);  
   const popProduct = (e) => {
         const productoEliminar = e.target.id;
-        const ventasSinProducto = ventas.filter((p) => p.id != productoEliminar);
+        const ventasSinProducto = ventas.filter((p) => p.id !== productoEliminar);
         setVentas([...ventasSinProducto]);
     };
  

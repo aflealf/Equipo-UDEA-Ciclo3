@@ -25,7 +25,7 @@ mongoose
         "mongodb+srv://misiontic2022:misiontic2022@clustermtic2022.gmvpu.mongodb.net/mtic2022?retryWrites=true&w=majority"
     )
     .then(() => {
-        console.log("Estamos conectados");
+        console.log("Estamos conectados.. port 3002");
     })
     .catch(error => console.error(error));
 

@@ -20,11 +20,11 @@ const producto = mongoose.Schema({
         max: [9999999, 'El precio ingresado es incorrecto, {VALUE}'],
         default: 0
     },
-    url: { work: { type: mongoose.SchemaTypes.Url, required: true } },
+    url: { type: String },
     categoria: {
         type: String,
         enum: {
-            values: ['Calzado', 'Accesorios', 'Wearables'],
+            values: ['Calzado', 'Accesorios', 'Wearables', 'Desconocida'],
             message: '{VALUE} es no permitido'
         },
         required: [true, 'La categoria es requerida'],

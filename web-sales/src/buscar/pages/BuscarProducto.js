@@ -1,7 +1,7 @@
 import { Col, Container, Row } from 'react-bootstrap';
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button'
-import Badge from "react-bootstrap/Badge";
+//import Badge from "react-bootstrap/Badge";
 import Form from 'react-bootstrap/Form'
 import Table from 'react-bootstrap/Table'
 const BuscarProducto = ({
@@ -67,7 +67,7 @@ const BuscarProducto = ({
             } else {
                 productosB.map((producto) => {
 
-                    if (producto.id == value || producto.description.toUpperCase() == value.toUpperCase()) {
+                    if (producto.id === value || producto.description.toUpperCase() === value.toUpperCase()) {
                         setProd(producto);
                         console.log("El producto es ", producto)
                     }

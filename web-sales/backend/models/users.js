@@ -36,8 +36,16 @@ const usuario = mongoose.Schema({
         type: String,
         maxlength: [20, 'El código postal debe tener maximo 20 caracteres']
     },
-    rol: { type: String, required: true, max: 100 },
-    estado: { type: String, required: true, max: 100 },
+    rol: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Roles",
+        required: true
+    },
+    estado: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Estados",
+        required: true
+    },
     created_at: { type: Date, default: Date.now }
 });
 

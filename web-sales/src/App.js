@@ -1,103 +1,121 @@
+import logo from "./logo.svg";
 import "./App.css";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 import {
-    BrowserRouter as Router,
-    Route,
-    Switch,
-    Redirect,
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
 } from "react-router-dom";
-import React, { useState, useEffect} from "react";
+import React, { useState } from "react";
 
 import Home from "./home/pages/Home";
-import Ventas from "./ventas/pages/Ventas";
+import Carrito from "./carrito/pages/Carrito";
 import Header from "./shared/Header";
 import CrearProducto from "./productos/pages/CrearProducto";
-import BuscarProducto from "./buscar/pages/BuscarProducto";
-import RegistroUsuario from "./usuarios/pages/RegistroUsuario";
-import ListadoUsuarios from "./usuarios/pages/ListadoUsuarios";
-import CallApi from "./api.js/env";
+import Gestion from "./productos/pages/Gestion";
+import api from "./api";
+import { useEffect } from "react";
+import EditarProducto from "./productos/pages/EditarProducto";
+
 function App() {
-    const [logged, setLogged] = useState(false);
-    const [ventas, setVentas] = useState([]);
-    const [usuarios, setUsuarios] = useState([]);
-    const [estados, setEstados ] =  useState([]);
-    const [roles, setRoles] =  useState([]);
-  
-    useEffect(() => {
-      const getUsers = async () => {
-         await fetch("http://localhost:3002/api/users")
-          .then(res =>  res.json())
-          .then(res => setUsuarios(res))
-          
-      };
-      const getEstados = async () => {
-        await fetch("http://localhost:3002/api/estados")
-         .then(res =>  res.json())
-         .then(res => setEstados(res))
-         
-     };
-     const getRoles = async () => {
-        await fetch("http://localhost:3002/api/roles")
-         .then(res =>  res.json())
-         .then(res => setRoles(res))
-         
-     };
-     getRoles();
-     getEstados();
-      
-      getUsers();
+  const [logged, setLogged] = useState(false);
+  const [carrito, setCarrito] = useState([]);
+  const [productos, setProductos] = useState([]);
 
-    }, []);
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await api.products.list();
+      //console.log(response);
+      setProductos(response);
+    };
 
-   
-   
+    fetchData();
+  }, []);
 
-    return ( 
-    <Router>
-        <Header isLoggedIn = { logged }
-        login = { setLogged }
-        cantVentas = {
-            ventas.reduce((total, producto) => total + producto.cantidad,
-                0
-            )
-        }
-        />  
-        <Switch>
-        <Route path = "/CallApi" exact >
-                <CallApi/>
-            </Route> 
-        <Route path = "/ListadoUsuarios" exact >
-                <ListadoUsuarios
-                usuarios = {usuarios}
-                roles= {roles}
-                estados = {estados} />
-                
-            </Route> 
+  useEffect(() => {
+    const token = localStorage.getItem("token");
 
-            <Route path = "/RegistroUsuario" exact >
-                <RegistroUsuario/>
-            </Route> 
-            <Route path = "/BuscarProducto" exact >
-                <BuscarProducto/>
-            </Route> 
-            <Route path = "/CrearProducto" exact>
-                <CrearProducto/>
-            </Route> 
-            <Route path = "/" exact>
-                <Home isLoggedIn = { logged }
-                ventas = { ventas }
-                setVentas = { setVentas }
-                /> 
+    if (token === null) {
+      setLogged(false);
+    } else {
+      setLogged(true);
+    }
+  }, []);
+
+    /*useEffect(() => {
+        const getUsers = async() => {
+            await fetch("http://localhost:3002/api/users")
+                .then(res => res.json())
+                .then(res => setUsuarios(res))
+
+        };
+        const getEstados = async() => {
+            await fetch("http://localhost:3002/api/estados")
+                .then(res => res.json())
+                .then(res => setEstados(res))
+
+        };
+
+        const getRoles = async() => {
+            await fetch("http://localhost:3002/api/roles")
+                .then(res => res.json())
+                .then(res => setRoles(res))
+
+        };
+
+        const getProducts = async() => {
+            await fetch("http://localhost:3002/api/products")
+                .then(res => res.json())
+                .then(res => setProductos(res))
+
+        };
+
+        setProductos();
+        getRoles();
+        getEstados();
+        getUsers();
+
+    }, []);*/
+
+    return (
+        <Router>
+          <Header
+            isLoggedIn={logged}
+            login={setLogged}
+            cantCarrito={carrito.reduce(
+            (total, producto) => total + producto.cantidad,
+            0
+            )}
+            />
+          <Switch>
+            <Route path="/" exact>
+              <Home
+                isLoggedIn={logged}
+                carrito={carrito}
+                setCarrito={setCarrito}
+                productos={productos}
+              />
             </Route>
-            <Route path = "/Ventas" exact>
-                <Ventas ventas = { ventas }
-                setVentas = { setVentas }
-                />
-            </Route> 
-            <Redirect to = "/"/>
-        </Switch>  
-    </Router>
-    );
-}
+            <Route path="/Carrito" exact>
+              <Carrito carrito={carrito} setCarrito={setCarrito} />
+            </Route>
+            <Route path="/CrearProducto" exact>
+              <CrearProducto productos={productos} setProductos={setProductos} isLoggedIn={logged}
+                carrito={carrito}
+                setCarrito={setCarrito} />
+            </Route>
+            <Route path="/Gestion" exact>
+              <Gestion productos={productos} setProductos={setProductos} />
+            </Route>
+            <Route path="/Gestion/Edit/:productId" exact>
+              <EditarProducto productos={productos} setProductos={setProductos} />
+            </Route>
+    
+            <Redirect to="/" />
+          </Switch>
+        </Router>
+      );
+    }
 
 export default App;

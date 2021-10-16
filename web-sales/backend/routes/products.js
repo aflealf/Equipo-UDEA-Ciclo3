@@ -21,7 +21,7 @@ router.get("/edit/:id", ProductController.edit);
  * Rutas Post
  */
 router.post("/update/:id", ProductController.update);
-router.post("/delete/:id", ProductController.delete);
+router.delete("/:id", ProductController.delete);
 router.post("/", ProductController.save);
 
 module.exports = router;

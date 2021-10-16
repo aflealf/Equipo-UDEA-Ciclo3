@@ -1,13 +1,13 @@
 import React from "react";
 
-import Button from "react-bootstrap/Button";
+//import Button from "react-bootstrap/Button";
 import Form from 'react-bootstrap/Form'
 import { Container } from "react-bootstrap";
 import ListaProductos from "../components/ListaProductos";
 import GoogleLogin from 'react-google-login';
 
 
-const Home = ({ isLoggedIn, ventas, setVentas, login, cantVentas }) => {
+const Home = ({ isLoggedIn, ventas, setVentas, carrito, setCarrito,login, cantVentas, productos }) => {
     const responseGoogle = (response) => {
         console.log(response);
     }
@@ -15,15 +15,16 @@ const Home = ({ isLoggedIn, ventas, setVentas, login, cantVentas }) => {
         return ( 
             <Container>
             <ListaProductos isLoggedIn = { isLoggedIn }
-            ventas = { ventas }
-            setVentas = { setVentas }
+              carrito={carrito}
+              setCarrito={setCarrito}
+              productos={productos}
             />  
             </Container>
         );
     } else {
         return (
-
             <div className="vh-100 row justify-content-center align-items-center BackColor">
+
             <div className="col-md-4 col-10">
               <Form>
                 <Form.Group className="mb-3 " controlId="formBasicEmail">
@@ -41,9 +42,11 @@ const Home = ({ isLoggedIn, ventas, setVentas, login, cantVentas }) => {
                 <Form.Group className="mb-3 " controlId="formBasicCheckbox">
                   {/*<Form.Check type="checkbox" label="Check me out" />*/}
                 </Form.Group>
-                {/*<Button variant="primary" type="submit" className="center" size="lg">
-                  Submit
-                </Button>*/}
+                {/*<div className="d-grid gap-2">
+                    <Button variant="primary" type="button" onClick={login} className="center" size="lg">
+                      Login
+                    </Button>
+                    </div>*/}
               </Form>
                 <br>
                 </br>
@@ -51,15 +54,15 @@ const Home = ({ isLoggedIn, ventas, setVentas, login, cantVentas }) => {
              *    Inicio de sesión con google
             */}
             <div className="container" align="center">
-            <div className="row" className="justify-content-center">OR</div>
-            <GoogleLogin
-                clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
-                buttonText="Login"
-                onSuccess={responseGoogle}
-                onFailure={responseGoogle}
-                cookiePolicy={'single_host_origin'}
-            />
-            </div>
+              <div className="row" align="center">OR</div>
+                <GoogleLogin
+                    clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
+                    buttonText="Login"
+                    onSuccess={responseGoogle}
+                    onFailure={responseGoogle}
+                    cookiePolicy={'single_host_origin'}
+                />
+              </div>
             </div>
           </div>
 
