@@ -10,6 +10,7 @@ const productsRoutes = require("./routes/products");
 const usersRoutes = require("./routes/users");
 const estadosRoutes = require("./routes/estados");
 const rolesRoutes = require("./routes/roles");
+const ventasRoutes = require("./routes/ventas");
 /** 
  * Lineas necesarias para que interprete Json en la peticiones de entrada por metodos POST por ejemplo
  */
@@ -34,5 +35,6 @@ app.use("/api/products/", productsRoutes);
 app.use("/api/users/", usersRoutes);
 app.use("/api/estados/", estadosRoutes);
 app.use("/api/roles/", rolesRoutes);
+app.use("/api/ventas/", ventasRoutes);
 
 module.exports = app;

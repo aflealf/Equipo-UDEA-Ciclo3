@@ -43,11 +43,8 @@ const HeaderButtons = ({ isLoggedIn, setLogin, cantVentas }) => {
                     </NavDropdown>
 
                     <NavDropdown title="Ventas" id="basic-nav-dropdown">
-                        <NavDropdown.Item href="/RegistroUsuario">Registrar</NavDropdown.Item>
-                        <NavDropdown.Item href="/Ventas">Consultar</NavDropdown.Item>
-                        <NavDropdown.Item href="#action/3.3">Editar</NavDropdown.Item>
-                        <NavDropdown.Divider />
-                        <NavDropdown.Item href="#action/3.4">Eliminar</NavDropdown.Item>
+                        <NavDropdown.Item href="/CrearVenta">Registrar</NavDropdown.Item>
+                        <NavDropdown.Item href="/GestionVentas">Gestionar</NavDropdown.Item>
                     </NavDropdown>
                 </Nav>
 
@@ -60,8 +57,8 @@ const HeaderButtons = ({ isLoggedIn, setLogin, cantVentas }) => {
     } else {
         return ( 
             <div>
-                {/* <Button onClick={ login }>Login</Button> */}
-                  <GoogleLogin
+                {/*  <Button onClick={ login }>Login</Button> */}
+                 <GoogleLogin
                     clientId="673123986671-5uj893dbjoghe04b3t66cimdk7or1qn0.apps.googleusercontent.com"
                     buttonText="Login"
                     onSuccess={login}

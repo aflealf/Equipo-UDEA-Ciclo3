@@ -70,9 +70,32 @@ const api = {
             list() {
                 return callApi("/categoria");
             },
+    },
+    ventas: {
+        list() {
+            return callApi("/ventas");
         },
-    
-       
+        create(venta) {
+            return callApi("/ventas", {
+                method: "POST",
+                body: JSON.stringify(venta),
+            });
+        },
+        delete(id) {
+            return callApi(`/ventas/${id}`, {
+                method: "DELETE",
+            });
+        },
+        edit(venta) {
+            return callApi(`/ventas/${venta._id}`, {
+                method: "PUT",
+                body: JSON.stringify(venta),
+            });
+        },
+        getVenta(id) {
+            return callApi(`/ventas/${id}`);
+        },
+    }, 
 };
 
 export default api;

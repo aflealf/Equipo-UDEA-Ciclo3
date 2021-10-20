@@ -19,19 +19,22 @@ import { useEffect } from "react";
 import EditarProducto from "./productos/pages/EditarProducto";
 import ListadoUsuarios from "./usuarios/pages/ListadoUsuarios";
 import EditarUsuario from "./usuarios/pages/EditarUsuario";
+import CrearVenta from "./ventas/pages/CrearVenta";
+import EditarVenta from "./ventas/pages/EditarVenta";
+import GestionVentas from "./ventas/pages/GestionVentas";
 
 function App() {
   const [logged, setLogged] = useState(false);
   const [carrito, setCarrito] = useState([]);
   const [productos, setProductos] = useState([]);
   const [usuarios, setUsuarios] = useState([]);
+  const [ventas, setVentas] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       const response = await api.products.list();
       //console.log(response);
       setProductos(response);
-      
     };
 
     const getUsers = async() => {
@@ -41,8 +44,17 @@ function App() {
       setUsuarios(responseUsers);
     };
 
+    const getVentas = async() => {
+      console.log("getVentas App.js");
+      const responseVentas = await api.ventas.list();
+      console.log("responseVentas = ", responseVentas);
+      setVentas(responseVentas);
+    };
+
+
     fetchData();
     getUsers();
+    getVentas();
   }, []);
 
   useEffect(() => {
@@ -123,6 +135,15 @@ function App() {
             </Route>
             <Route path="/EditarUsuario" exact>
               <EditarUsuario usuarios={usuarios} setUsuarios={setUsuarios} />
+            </Route>
+            <Route path="/CrearVenta" exact>
+              <CrearVenta ventas={ventas} setVentas={setVentas} />
+            </Route>
+            <Route path="/GestionVentas" exact>
+              <GestionVentas ventas={ventas} setVentas={setVentas} />
+            </Route>
+            <Route path="/GestionVentas/Edit/:productId" exact>
+              <EditarVenta ventas={ventas} setVentas={setVentas} />
             </Route>
      
             <Redirect to="/" />
