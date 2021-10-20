@@ -9,6 +9,7 @@ import { GoogleLogin } from 'react-google-login';
 const HeaderButtons = ({ isLoggedIn, setLogin, cantVentas }) => {
     const login = (res) => {
         setLogin(true);
+        localStorage.setItem("token", res.tokenId);
         localStorage.setItem("isLogged", true);
     };
 
@@ -18,6 +19,7 @@ const HeaderButtons = ({ isLoggedIn, setLogin, cantVentas }) => {
 
     const logout = () => {
         setLogin(false);
+        localStorage.removeItem("token");
         localStorage.setItem("isLogged", false);
     };
 

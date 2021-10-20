@@ -9,24 +9,21 @@ import { Link } from "react-router-dom";
 const ListadoUsuarios = ({usuarios, setUsuarios}) => {
   const deleteUser = (event) => {
     const id = event.target.id;
+    console.log("event = ",event);
+    console.log("Id = ",id);
     api.users.delete(id);
     console.log(usuarios);
     const newUsers = usuarios.filter((usuario) => usuario._id !== id);
     setUsuarios([...newUsers]);
   };
 
-
-
-
     return (
-
         <div>
         <h1 className="text-center mt-5 mb-5">Mis Usuarios </h1>
         <Container> 
           <Table striped bordered hover>
             <thead>
               <tr>
-                <th>Id</th>
                 <th>Nombres</th>
                 <th>Apellidos</th>
                 <th>Rol</th>
@@ -38,7 +35,6 @@ const ListadoUsuarios = ({usuarios, setUsuarios}) => {
               {usuarios.map((usuario) =>{ 
               return(
                 <tr key ={usuario._id} >
-                
                 <td>{usuario.nombres}</td>
                 <td>{usuario.apellidos}</td>
                 <td>{usuario.rol}</td>

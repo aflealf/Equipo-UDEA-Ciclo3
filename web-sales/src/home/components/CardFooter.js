@@ -13,7 +13,7 @@ const CardFooter = ({
   const AddProduct = (e) => {
     const productoAgregar = productos.find( p => p._id === e.target.id);
     console.log(typeof e.target.id);
-    const productoAgregado = carrito.find((p) => p._id == productoAgregar.id);
+    const productoAgregado = carrito.find((p) => p._id === productoAgregar.id);
     
     if (productoAgregado) {
       //Cuando ya está el producto en el carrito

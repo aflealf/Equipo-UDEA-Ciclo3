@@ -7,14 +7,37 @@
   */
 
  var mongoose = require('mongoose');
- var User = require("../models/users");
+ const User = require("../models/users");
 
+exports.getUser = (req, res) => {
+  const email = req.params.email;
+  User.findOne({ email: email }).then((user) => {
+    if (user) {
+      if (user.activo) {
+        res.status(200).json("Usuario activo");
+      } else {
+        res.status(500).json("Usuario inactivo");
+      }
+    } else {
+      const newUser = new User({
+        email: req.userData.email,
+        nombre: req.userData.name,
+        activo: false,
+      });
+
+      newUser.save().then((user) => {
+        res.status(200).json("Usuario creado");
+      });
+    }
+  });
+};
+ 
  /**
   * 
   * @description: Esta funcion Lista todos los usuarios que se encuentren almacenados en la Base de datos
   * 
   */
- exports.getUsers = (req, res) => {
+ exports.listUsers = (req, res) => {
      User.find().then((userResult) => {
          res.status(200).json(userResult);
      });
@@ -50,7 +73,7 @@
   * @description: Esta funcion se encarga de almacenar en la tabla de usuarios en Base de Datos
   * 
   */
- exports.save = function(req, res) {
+  exports.save = function(req, res) {
      const UserAdd = new User({
          email: req.body.email,
          nombres: req.body.nombres,
@@ -64,27 +87,18 @@
          estado: req.body.estado
      });
 
-    //  No se usa Promise, se usa un Callback
+      // No se usa Promise, se usa un Callback
       UserAdd.save(function(err) {
-          if (err) {
-              console.log('Error: ', err);
-                         res.status(400).json(err);
-         } else {
-           console.log("Successfully created a user. :)");
-           //res.render("../views/user/edit", { usuario: usuario });
-           res.status(201).json("Creado satisfactoriamente");
-      }
-       });
-
-    //   UserAdd
-    //       .save()
-    //       .then((createdProduct) => {
-    //       res.status(201).json("Creado satisfactoriamente");
-    //       })
-    //        .catch((error) => {
-    //       res.status(500).json({ err: error });
-    //       });
-    //  }
+        if (err) {
+          console.log('Error: ', err);
+          res.status(400).json(err);
+        } else {
+          console.log("Successfully created a user. :)");
+          //res.render("../views/user/edit", { usuario: usuario });
+          res.status(201).json("Creado satisfactoriamente");
+        }
+      });
+  }
     
 
  /**
@@ -140,38 +154,11 @@
   * @description: Esta funcion se encarga de Eliminar de tabla usuarios de la Base de Datos
   * 
   */
- exports.delete = function(req, res) {
-
-     User.remove({ _id: req.params.id }, function(err) {
-         if (err) { console.log('Error: ', err); return; }
-
-         console.log("User deleted!");
-         res.status(201).json("Usuario eliminado satisfactoriamente");
-         res.redirect("/user");
-     });
-
+  exports.delete = function(req, res) {
+    
+    const id = req.params.id;
+    console.log("Controller user delete");
+    User.deleteOne({ _id: id }).then((usersResult) => {
+          res.status(200).json("El usuario se eliminó satisfactoriamente.");
+      });
   };
-// const User = require("../models/users");
-
-// exports.GetUser = (req, res) => {
-//   const email = req.params.email;
-//   User.findOne({ email: email }).then((user) => {
-//     if (user) {
-//       if (user.activo) {
-//         res.status(200).json("Usuario activo");
-//       } else {
-//         res.status(500).json("Usuario inactivo");
-//       }
-//     } else {
-//       const newUser = new User({
-//         email: req.userData.email,
-//         nombre: req.userData.name,
-//         activo: false,
-//       });
-
-//       newUser.save().then((user) => {
-//         res.status(200).json("Usuario creado");
-//       });
-//     }
-//   });
-};

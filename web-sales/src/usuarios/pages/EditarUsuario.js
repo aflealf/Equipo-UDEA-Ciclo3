@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { Container, Row, Col, Alert } from "react-bootstrap";
 import api from "../../api";
 import UsersForm from "../components/UsersForm";
@@ -10,7 +10,7 @@ const EditarUsuario = ({ usuarios, setUsuarios }) => {
   const [estados, setEstados] = useState([]);
   const [error, setError] = useState();
   const [success, setSuccess] = useState();
-  const { productId } = useParams();
+  //const { productId } = useParams();
 
   const [newProduct, setNewProduct] = useState({
     title: "",

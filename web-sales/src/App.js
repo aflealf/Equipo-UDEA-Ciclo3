@@ -1,4 +1,4 @@
-import logo from "./logo.svg";
+//import logo from "./logo.svg";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {
@@ -31,11 +31,18 @@ function App() {
       const response = await api.products.list();
       //console.log(response);
       setProductos(response);
+      
+    };
+
+    const getUsers = async() => {
+      console.log("getUsers App.js");
       const responseUsers = await api.users.list();
-      setProductos(responseUsers);
+      console.log("responseUsers = ", responseUsers);
+      setUsuarios(responseUsers);
     };
 
     fetchData();
+    getUsers();
   }, []);
 
   useEffect(() => {
@@ -49,12 +56,7 @@ function App() {
   }, []);
 
     /*useEffect(() => {
-        const getUsers = async() => {
-            await fetch("http://localhost:3002/api/users")
-                .then(res => res.json())
-                .then(res => setUsuarios(res))
-
-        };
+        
         const getEstados = async() => {
             await fetch("http://localhost:3002/api/estados")
                 .then(res => res.json())

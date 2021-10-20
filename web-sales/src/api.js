@@ -6,6 +6,7 @@ const callApi = async(url, options = {}) => {
 
     const response = await fetch("http://localhost:3002/api" + url, options);
     const data = await response.json();
+    //console.log("data ",data);
     return data;
 };
 
@@ -45,6 +46,7 @@ const api = {
             return callApi("/users");
         },
         delete(id) {
+            console.log("users.delete() api.js ",id);
             return callApi(`/users/${id}`, {
                 method: "DELETE",
             });
