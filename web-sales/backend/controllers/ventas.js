@@ -136,5 +136,12 @@
                 res.redirect('/ventas/show/' + venta._id);
                 res.status(201).json("Venta actualizado satisfactoriamente");
             });
+
     };
+    exports.findProduct = (req, res) => {
+        const name = req.params.name;
+        Venta.find({ title: { $regex: ".*" + name + ".*" } }).then((products) => {
+          res.status(200).json(products);
+        });
+      };
  

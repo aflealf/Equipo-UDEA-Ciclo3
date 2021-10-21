@@ -5,8 +5,8 @@ import Producto from "./Producto";
 const ListaProductos = ({ isLoggedIn, ventas, setVentas, productos }) => {
     //const productos = fetch("http://localhost:3002/api/products/");
 
-    return ( <Container
-        Container >
+    return ( 
+    <Container>
         <Row> 
         {
             productos.map((producto) => ( 

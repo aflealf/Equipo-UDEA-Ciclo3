@@ -34,10 +34,12 @@ const CrearVenta = ({ ventas, setVentas }) => {
       const apiResponse = await api.ventas.create(newVenta);
       if (apiResponse.err) {
         setError(apiResponse.err.message);
-        console.log(apiResponse.err);
+      setSuccess();
+      console.log(apiResponse.err);
       } else {
-        setSuccess(apiResponse);
-        setVentas([...ventas, newVenta]);
+        setSuccess(apiResponse.mensaje);
+        setError();
+        setVentas([...ventas, apiResponse.ventas]);
         //history.push("/");
       }
     };

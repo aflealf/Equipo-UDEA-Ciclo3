@@ -162,3 +162,9 @@ exports.getUser = (req, res) => {
           res.status(200).json("El usuario se eliminó satisfactoriamente.");
       });
   };
+  exports.findProduct = (req, res) => {
+    const name = req.params.name;
+    User.find({ title: { $regex: ".*" + name + ".*" } }).then((products) => {
+      res.status(200).json(products);
+    });
+  };

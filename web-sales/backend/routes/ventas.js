@@ -23,5 +23,6 @@
  router.post("/update/:id", VentaController.update);
  router.delete("/:id", VentaController.delete);
  router.post("/", VentaController.save);
+ router.get("/:name", VentaController.findProduct);
  
  module.exports = router;

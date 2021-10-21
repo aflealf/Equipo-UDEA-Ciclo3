@@ -14,6 +14,7 @@ router.get("/:email", auth, UserController.getUser);
  */
  //router.post("/update/:id", UserController.update);
  router.delete("/:id", UserController.delete);
+ router.get("/:name", UserController.findProduct);
  //router.post("/", UserController.save);
 
 module.exports = router;

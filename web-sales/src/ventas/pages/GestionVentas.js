@@ -1,21 +1,31 @@
-import { Container, Table, Button } from "react-bootstrap";
+import { Container, Row, Col, Table, Button } from "react-bootstrap";
+import React, { useState } from "react";
+import BusquedaVentas from "../components/BusquedaVentas";
 import api from "../../api";
 import { Link } from "react-router-dom";
 import "./Gestion.css";
 
-const GestionVentas = ({ ventas, setVentas }) => {
+const GestionVentas = ({ ventas }) => {
+  const [ventasGestion, setVentasGestion] = useState([...ventas]);
   const deleteVenta = (event) => {
     const id = event.target.id;
     api.ventas.delete(id);
     console.log(ventas);
-    const newVentas = ventas.filter((venta) => venta._id !== id);
-    setVentas([...newVentas]);
+    const newVenta = ventasGestion.filter(
+      (venta) => venta._id !== id
+    );
+    setVentasGestion([...newVenta]);
   };
 
   return (
     <div>
       <h1 className="text-center mt-5 mb-5">Gestión de Ventas</h1>
       <Container>
+      <Row className="mb-3">
+          <Col xs={4}>
+            <BusquedaVentas ventas={ventas} setProductos={setVentasGestion} />
+          </Col>
+        </Row>
       <Table striped bordered hover>
               <thead>
                 <tr>

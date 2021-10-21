@@ -139,3 +139,10 @@ exports.delete = function(req, res) {
                res.status(201).json("Poducto actualizado satisfactoriamente");
            });
    };
+
+   exports.findProduct = (req, res) => {
+    const name = req.params.name;
+    Product.find({ title: { $regex: ".*" + name + ".*" } }).then((products) => {
+      res.status(200).json(products);
+    });
+  };

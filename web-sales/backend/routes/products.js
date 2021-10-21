@@ -6,6 +6,7 @@
  */
 const express = require('express');
 const router = express.Router();
+//const auth = require("../middleware/auth");
 
 const ProductController = require("../controllers/products");
 
@@ -23,5 +24,5 @@ router.get("/edit/:id", ProductController.edit);
 router.post("/update/:id", ProductController.update);
 router.delete("/:id", ProductController.delete);
 router.post("/", ProductController.save);
-
+router.get("/:name", ProductController.findProduct);
 module.exports = router;

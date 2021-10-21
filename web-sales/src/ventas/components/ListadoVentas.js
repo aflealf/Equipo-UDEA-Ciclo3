@@ -7,7 +7,8 @@ const ListadoVentas = ({ isLoggedIn, ventas, setVentas, productos }) => {
     const ventas = newLocal;
     console.log("ventas", ventas);
 
-    return ( <Container>
+    return ( 
+    <Container>
         <Row> 
         {
             ventas.map((venta) => ( 

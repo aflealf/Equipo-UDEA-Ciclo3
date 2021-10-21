@@ -35,6 +35,9 @@ const api = {
         getProduct(id) {
             return callApi(`/products/${id}`);
         },
+        find(name) {
+            return callApi(`/products/${name}`);
+          },
     },
     categorias: {
         list() {
@@ -95,6 +98,9 @@ const api = {
         getVenta(id) {
             return callApi(`/ventas/${id}`);
         },
+        find(name) {
+            return callApi(`/ventas/${name}`);
+          },
     }, 
 };
 

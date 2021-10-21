@@ -7,7 +7,7 @@ module.exports = (req, res, next) => {
     token = token.split(" ")[1];
     const decodedToken = jwt.decode(token);
     req.userData = { email: decodedToken.email, name: decodedToken.name };
-    console.log(decodedToken);
+   
     next();
   }
 }
